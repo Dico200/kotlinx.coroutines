@@ -4,14 +4,10 @@
 
 buildscript {
     ext.useKotlinSnapshot = rootProject.properties['kotlinSnapshot'] != null
-    if (useKotlinSnapshot) {
-        ext.kotlin_version = '1.2-SNAPSHOT'
-        repositories {
-            maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-        }
-    }
+    ext.kotlin_version = "1.3-M2"
     repositories {
         jcenter()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
         maven { url "https://kotlin.bintray.com/kotlinx" }
         maven { url "https://kotlin.bintray.com/kotlin-dev" }
         maven { url "https://jetbrains.bintray.com/kotlin-native-dependencies" }
@@ -45,11 +41,8 @@ buildscript {
 }
 
 allprojects {
-    def deployVersion = properties['DeployVersion']
-    if (deployVersion != null) version = deployVersion
-    if (useKotlinSnapshot) {
-        kotlin_version = '1.2-SNAPSHOT'
-    }
+    version = "0.25.0-eap13-M2"
+    kotlin_version = "1.3-M2"
 
     repositories {
         jcenter()
